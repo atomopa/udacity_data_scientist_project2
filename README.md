@@ -42,22 +42,22 @@ This contains the code for homework 2 in the Udacity Data Scientist Nano Degree.
 # Project Components
 1. **ETL Pipeline**
 `/data/process_data.py` contains a data cleaning pipeline that:
-  - Loads the messages and categories datasets
-  - Merges the two datasets
-  - Cleans the data
-  - Stores it in a SQLite database
+    - Loads the messages and categories datasets
+    - Merges the two datasets
+    - Cleans the data
+    - Stores it in a SQLite database
 
 2. **ML Pipeline**
 `/models/train_classifier.py` contains a machine learning pipeline that:
-  - Loads data from the SQLite database
-  - Splits the dataset into training and test sets
-  - Builds a text processing and machine learning pipeline
-  - Trains and tunes a model using GridSearchCV
-  - Outputs results on the test set
-  - Exports the final model as a pickle file
+    - Loads data from the SQLite database
+    - Splits the dataset into training and test sets
+    - Builds a text processing and machine learning pipeline
+    - Trains and tunes a model using GridSearchCV
+    - Outputs results on the test set
+    - Exports the final model as a pickle file
 
 3. **Flask Web App**
-`/app/run.py` contains the web app that lets users classify their messages based on the created ML Pipeline and shows visualizations to give further insides into the dataset used for training the model.
+    `/app/run.py` contains the web app that lets users classify their messages based on the created ML Pipeline and shows visualizations to give further insides into the dataset used for training the model.
 
 
 # Instructions
