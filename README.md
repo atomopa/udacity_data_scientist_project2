@@ -71,8 +71,8 @@ To launch the web app follow these steps:
     - To run ML pipeline that trains classifier and saves
         `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
 
-2. Run the following command in the project's root directory to run your web app.
-    `python app/run.py`
+2. Run the following command from the app directory to launch your web app.
+    `python run.py`
 
 3. Go to http://0.0.0.0:3001/ to open the web app
 
