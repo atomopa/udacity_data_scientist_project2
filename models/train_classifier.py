@@ -9,6 +9,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.multioutput import MultiOutputClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import GridSearchCV
 
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
@@ -61,17 +62,26 @@ def tokenize(text):
 def build_model():
     '''
     OUTPUT:
-    pipeline - ready to use ML pipeline
+    pipeline - ready to use ML pipeline optimized with grid search
     
-    This function creates a ML pipeline.
+    This function creates a ML pipeline and performs a grid search for the best parameters.
     '''
+    # create the pipeline
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
         ('clf', MultiOutputClassifier(RandomForestClassifier()))
     ])
     
-    return pipeline
+    # define grid search parameters
+    parameters = {
+        'tfidf__use_idf': (True, False),
+        'clf__estimator__n_estimators': [50, 60, 70]
+    }
+
+    cv = GridSearchCV(pipeline, param_grid=parameters)
+    
+    return cv
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
