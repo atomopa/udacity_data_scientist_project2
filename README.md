@@ -37,7 +37,6 @@ This contains the code for homework 2 in the Udacity Data Scientist Nano Degree.
   * DisasterResponse.db: disaster response data in database (output of process_data.py)
   * process_data.py: ETL process
 * \models
-  * classifier.pkl: exportet disaster message classification model (result of train_classifier.py)
   * train_classifier.py: ML pipeline
 
 # Project Components
