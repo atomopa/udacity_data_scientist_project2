@@ -15,6 +15,17 @@ from nltk.stem import WordNetLemmatizer
 
 
 def load_data(database_filepath):
+    '''
+    INPUT:
+    database_filepath - filepath to the database to be read
+    
+    OUTPUT:
+    X - X matrix
+    Y - Y matrix
+    category_names - column headers from Y matrix
+    
+    This function reads the provided database into X and Y matrices.
+    '''
     engine = create_engine(f'sqlite:///{database_filepath}')
     df = pd.read_sql("SELECT * FROM data", engine)
 
@@ -27,6 +38,15 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
+    '''
+    INPUT:
+    text - string to be tokenized
+    
+    OUTPUT:
+    clean_tokens - list of tokens
+    
+    This function tokenizes the provided string using word_tokenize and WordNetLemmatizer as well as converts to lower case and strips spaces.
+    '''
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
 
@@ -39,6 +59,12 @@ def tokenize(text):
 
 
 def build_model():
+    '''
+    OUTPUT:
+    pipeline - ready to use ML pipeline
+    
+    This function creates a ML pipeline.
+    '''
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
@@ -49,6 +75,15 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    '''
+    INPUT:
+    model - trained model
+    X_test - input matrix of test dataset
+    Y_test - results matrix of test dataset
+    category_names - category names (Y_test column headers)
+    
+    This function predicts the answers to X_test and compares the prediction to Y_test to evaluate the model performance.
+    '''
     Y_pred = model.predict(X_test)
     
     tp = np.zeros(36)
@@ -73,25 +108,37 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
 
 def save_model(model, model_filepath):
+    '''
+    INPUT:
+    model - trained model
+    model_filepath - path where model will be saved
+    
+    This function pickles the model and stores it.
+    '''
     pickle.dump(model, open(model_filepath,'wb'))
 
 
 def main():
     if len(sys.argv) == 3:
+        # load the data from sql into X and Y and category_names
         database_filepath, model_filepath = sys.argv[1:]
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
         X, Y, category_names = load_data(database_filepath)
         X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2)
         
+        # build the model
         print('Building model...')
         model = build_model()
         
+        # train the model
         print('Training model...')
         model.fit(X_train, Y_train)
         
+        # evaluate the model
         print('Evaluating model...')
         evaluate_model(model, X_test, Y_test, category_names)
 
+        # save the model
         print('Saving model...\n    MODEL: {}'.format(model_filepath))
         save_model(model, model_filepath)
 
