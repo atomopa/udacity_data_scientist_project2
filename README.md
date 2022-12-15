@@ -1,6 +1,8 @@
 
 # Udacity Data Scientist Homework Assignment 2
-This contains the code for homework 2 in the Udacity Data Scientist Nano Degree. Based on data provided by Figure Eight a model was trained to classify disaster messages into disaster categories. The model was incorporated into a web app using Flask that allows users to classify messages. Furthermore, additional insides into the training data was porvided through the web app using visualizations made with the plotly library.
+This contains the code for homework 2 in the Udacity Data Scientist Nano Degree. Based on data provided by Figure Eight a model was trained to classify disaster messages into disaster categories. The model was incorporated into a web app using Flask that allows users to classify messages. Furthermore, additional insides into the training data was porvided through the web app using visualizations made with the plotly library. 
+
+Models that can classify messages quick and reliably in this context go a long way to help coordinate and prioritze help efforts. This is of particular importance in the case of large disasters where the number of messages can quickly become overwhelming and prioritization of limited resources is essential.
 
 # Libraries used
 **sys**: provides access to system-specific parameters and functions
