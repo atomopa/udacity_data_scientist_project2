@@ -45,7 +45,7 @@ This contains the code for homework 2 in the Udacity Data Scientist Nano Degree.
   - Merges the two datasets
   - Cleans the data
   - Stores it in a SQLite database
-  - 
+
 2. **ML Pipeline**
 `/models/train_classifier.py` contains a machine learning pipeline that:
   - Loads data from the SQLite database
