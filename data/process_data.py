@@ -4,6 +4,17 @@ from sqlalchemy import create_engine
 
 
 def load_data(messages_filepath, categories_filepath):
+    '''
+    INPUT:
+    messages_filepath - filepath the the message data
+    categories_filepath - filepath to the categories data
+    
+    OUTPUT:
+    df - dataframe containing the contents of the csv files
+    
+    This function reads in the messages and categories csv files and combines them to a dataframe
+    '''
+    
     messages = pd.read_csv(messages_filepath)
     categories = pd.read_csv(categories_filepath)
     
@@ -13,6 +24,16 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
+    '''
+    INPUT:
+    df - dataframe to be cleaned
+    
+    OUTPUT:
+    df - cleaned dataframe 
+    
+    This function cleans the dataframe by splitting the categories columns and converting them to binary values
+    '''
+        
     categories = df['categories'].str.split(';', expand=True)
     
     row = categories.loc[0]
@@ -35,6 +56,13 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
+    '''
+    INPUT:
+    df - dataframe to be saved
+    database_filename - database path
+    
+    This function stores the dataframe to a database
+    '''
     engine = create_engine(f'sqlite:///{database_filename}')
     df.to_sql('data', engine, index=False)  
 
@@ -43,14 +71,17 @@ def main():
     if len(sys.argv) == 4:
 
         messages_filepath, categories_filepath, database_filepath = sys.argv[1:]
-
+        
+        # load the csv files into dataframe
         print('Loading data...\n    MESSAGES: {}\n    CATEGORIES: {}'
               .format(messages_filepath, categories_filepath))
         df = load_data(messages_filepath, categories_filepath)
 
+        # clean dataframe
         print('Cleaning data...')
         df = clean_data(df)
         
+        # store dataframe
         print('Saving data...\n    DATABASE: {}'.format(database_filepath))
         save_data(df, database_filepath)
         
