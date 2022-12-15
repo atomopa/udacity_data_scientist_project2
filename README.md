@@ -26,42 +26,19 @@ This contains the code for homework 2 in the Udacity Data Scientist Nano Degree.
 **sqlalchemy**: provides a SQL toolkit and ORM for databases
 
 # Files
-**/app/run.py**: flask code to run web app
-
-**/data/disaster_categories.csv and /data/disaster_messages.csv**: disaster and messages dataset provided by Figure Eight
-
-**/data/DisasterResponse.db**: disaster response data in database (output of process_data.py)
-
-**/data/process_data.py**: ETL process
-
-**/models/classifier.pkl**: exportet disaster message classification model (result of train_classifier.py)
-
-**/models/train_classifier.py**: ML pipeline 
-
- * [tree-md](./tree-md)
- * [dir2](./dir2)
-   * [file21.ext](./dir2/file21.ext)
-   * [file22.ext](./dir2/file22.ext)
-   * [file23.ext](./dir2/file23.ext)
- * [dir1](./dir1)
-   * [file11.ext](./dir1/file11.ext)
-   * [file12.ext](./dir1/file12.ext)
- * [file_in_root.ext](./file_in_root.ext)
- * [README.md](./README.md)
- * [dir3](./dir3)
-
-		- \app
-			- run.py: flask file to run the app
-		- \templates
-			- master.html: main page of the web application 
-			- go.html: result web page
-		- \data
-			- disaster_categories.csv: categories dataset
-			- disaster_messages.csv: messages dataset
-			- DisasterResponse.db: disaster response database
-			- process_data.py: ETL process
-		- \models
-			- train_classifier.py: classification code
+* \app
+*   run.py: flask code to run web app
+*   \templates
+*     master.html: web app main page
+*     go.html: web app results page
+* \data
+*   disaster_categories.csv: disaster categories dataset
+*   disaster_messages.csv: disaster messages dataset
+*   DisasterResponse.db: disaster response data in database (output of process_data.py)
+*   process_data.py: ETL process
+* \models
+*   classifier.pkl: exportet disaster message classification model (result of train_classifier.py)
+*   train_classifier.py: ML pipeline
 
 # Project Components
 1. **ETL Pipeline**
