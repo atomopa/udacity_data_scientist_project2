@@ -47,6 +47,9 @@ def clean_data(df):
         # convert column from string to numeric
         categories[column] = pd.to_numeric(categories[column])
         
+    # drop rows where related = 2
+    categories = categories[categories.related != 2]
+    
     df = df.drop(['categories'], axis=1)
     df = pd.concat([df, categories], axis=1)
     
