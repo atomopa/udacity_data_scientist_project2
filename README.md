@@ -38,6 +38,31 @@ This contains the code for homework 2 in the Udacity Data Scientist Nano Degree.
 
 **/models/train_classifier.py**: ML pipeline 
 
+ * [tree-md](./tree-md)
+ * [dir2](./dir2)
+   * [file21.ext](./dir2/file21.ext)
+   * [file22.ext](./dir2/file22.ext)
+   * [file23.ext](./dir2/file23.ext)
+ * [dir1](./dir1)
+   * [file11.ext](./dir1/file11.ext)
+   * [file12.ext](./dir1/file12.ext)
+ * [file_in_root.ext](./file_in_root.ext)
+ * [README.md](./README.md)
+ * [dir3](./dir3)
+
+		- \app
+			- run.py: flask file to run the app
+		- \templates
+			- master.html: main page of the web application 
+			- go.html: result web page
+		- \data
+			- disaster_categories.csv: categories dataset
+			- disaster_messages.csv: messages dataset
+			- DisasterResponse.db: disaster response database
+			- process_data.py: ETL process
+		- \models
+			- train_classifier.py: classification code
+
 # Project Components
 1. **ETL Pipeline**
 `/data/process_data.py` contains a data cleaning pipeline that:
